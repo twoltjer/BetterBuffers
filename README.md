@@ -1,5 +1,7 @@
 # BetterBuffers
 
+[![Build and Publish](https://github.com/twoltjer/BetterBuffers/actions/workflows/build.yml/badge.svg)](https://github.com/twoltjer/BetterBuffers/actions/workflows/build.yml)
+
 A high-performance replacement for .NET's ArrayPool that delivers similar or better performance with improved memory management.
 
 ## Overview

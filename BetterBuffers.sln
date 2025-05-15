@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterBuffers", "BetterBuffers\BetterBuffers.csproj", "{A7D6B72C-5CE2-4C0F-931E-A2D046A191EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterBuffers.Tests", "BetterBuffers.Tests\BetterBuffers.Tests.csproj", "{15643C69-015F-47A0-90B5-2C92140B92D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterBuffers.Benchmarks", "BetterBuffers.Benchmarks\BetterBuffers.Benchmarks.csproj", "{661475C0-E17A-4BEB-B68A-50A1970EC88C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7D6B72C-5CE2-4C0F-931E-A2D046A191EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7D6B72C-5CE2-4C0F-931E-A2D046A191EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7D6B72C-5CE2-4C0F-931E-A2D046A191EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7D6B72C-5CE2-4C0F-931E-A2D046A191EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15643C69-015F-47A0-90B5-2C92140B92D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15643C69-015F-47A0-90B5-2C92140B92D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15643C69-015F-47A0-90B5-2C92140B92D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15643C69-015F-47A0-90B5-2C92140B92D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{661475C0-E17A-4BEB-B68A-50A1970EC88C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{661475C0-E17A-4BEB-B68A-50A1970EC88C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{661475C0-E17A-4BEB-B68A-50A1970EC88C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{661475C0-E17A-4BEB-B68A-50A1970EC88C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

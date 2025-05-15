@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net6.0;net8.0;net9.0</TargetFrameworks>
+        <PackageId>BetterBuffers</PackageId>
+        <Version>0.1.0</Version>
+        <Authors>Thomas Woltjer</Authors>
+        <Description>An improved, high-performance buffer pooling system that replaces ArrayPool&lt;T&gt;</Description>
+        <PackageTags>buffer;arraypool;performance;memory;pooling</PackageTags>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks> 
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+</Project>

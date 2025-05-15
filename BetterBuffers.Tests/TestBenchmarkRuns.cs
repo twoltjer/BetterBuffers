@@ -6,6 +6,7 @@ public class TestBenchmarkRuns
 	public void TestUsingArrayPool()
 	{
 		var instance = new BufferPoolBenchmark();
+		instance.Setup();
 		instance.UsingArrayPool_Short();
 	}
 
@@ -13,6 +14,7 @@ public class TestBenchmarkRuns
 	public void TestUsingArrayPoolLong()
 	{
 		var instance = new BufferPoolBenchmark();
+		instance.Setup();
 		instance.UsingArrayPool_Long();
 	}
 	
@@ -20,6 +22,7 @@ public class TestBenchmarkRuns
 	public void TestUsingHeap()
 	{
 		var instance = new BufferPoolBenchmark();
+		instance.Setup();
 		instance.UsingHeap_Short();
 	}
 
@@ -27,6 +30,7 @@ public class TestBenchmarkRuns
 	public void TestUsingBetterBuffers()
 	{
 		var instance = new BufferPoolBenchmark();
+		instance.Setup();
 		instance.UsingBetterBuffers_Short();
 	}
 	
@@ -34,6 +38,7 @@ public class TestBenchmarkRuns
 	public void TestUsingBetterBuffersLong()
 	{
 		var instance = new BufferPoolBenchmark();
+		instance.Setup();
 		instance.UsingBetterBuffers_Long();
 	}
 }

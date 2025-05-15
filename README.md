@@ -18,12 +18,16 @@ BetterBuffers provides an optimized alternative to the standard .NET ArrayPool, 
 ## Benchmarks
 
 ```
-| Scenario                 | ArrayPool     | BetterBuffers  | Improvement |
-|--------------------------|---------------|----------------|-------------|
-| Get/Return (single)      | 12.3 ns       | 10.8 ns        | ~12%        |
-| Get/Return (concurrent)  | 42.5 ns       | 38.9 ns        | ~8%         |
-| Memory fragmentation     | 28.4%         | 12.7%          | ~55%        |
-| GC collections (1M ops)  | 17            | 9              | ~47%        |
+| Method                   | Mean        | Error      | StdDev     | Median      | Gen0       | Gen1       | Gen2      | Allocated    |
+|------------------------- |------------:|-----------:|-----------:|------------:|-----------:|-----------:|----------:|-------------:|
+| UsingHeap_Short          | 1,193.13 ms |  38.089 ms | 111.709 ms | 1,186.35 ms |  5000.0000 |  5000.0000 | 4000.0000 | 124702.31 MB |
+| UsingArrayPool_Short     | 1,906.81 ms |  63.321 ms | 186.703 ms | 1,906.36 ms |          - |          - |         - |  19434.89 MB |
+| UsingBetterBuffers_Short |    26.18 ms |   0.475 ms |   0.397 ms |    26.12 ms |   406.2500 |   406.2500 |         - |     24.72 MB |
+
+| Method                   | Mean        | Error      | StdDev     | Median      | Gen0       | Gen1       | Gen2      | Allocated    |
+|------------------------- |------------:|-----------:|-----------:|------------:|-----------:|-----------:|----------:|-------------:|
+| UsingArrayPool_Long      | 3,980.47 ms | 128.304 ms | 372.233 ms | 3,853.01 ms |  6000.0000 |  6000.0000 | 6000.0000 | 115406.41 MB |
+| UsingBetterBuffers_Long  | 1,625.22 ms |  29.842 ms |  27.914 ms | 1,626.48 ms | 25000.0000 | 12000.0000 |         - |   1220.59 MB |
 ```
 
 ## Installation

@@ -11,15 +11,16 @@ BenchmarkRunner.Run<BufferPoolBenchmark>();
 [MemoryDiagnoser]
 public class BufferPoolBenchmark
 {
-	private readonly BufferPool<byte> _pool;
-	private readonly int[] _sizes;
-	private readonly Queue<Memory<byte>> _memoryQueue;
-	private readonly Random _random;
-	private readonly ArrayPool<byte> _arrayPool;
+	private BufferPool<byte> _pool = null!;
+	private int[] _sizes = null!;
+	private Queue<Memory<byte>> _memoryQueue = null!;
+	private Random _random = null!;
+	private ArrayPool<byte> _arrayPool = null!;
 	private const double Lies = 0.53;
 	private const int TargetMemoryQueue = 4800;
 
-	public BufferPoolBenchmark()
+	[GlobalSetup]
+	public void Setup()
 	{
 		_pool = new BufferPool<byte>();
 		_random = new Random(0);
@@ -38,6 +39,7 @@ public class BufferPoolBenchmark
 
 		_memoryQueue = new Queue<Memory<byte>>(capacity: _sizes.Length);
 		_arrayPool = ArrayPool<byte>.Create(maxArrayLength: sizeLimit, maxArraysPerBucket: 50);
+		GC.Collect();
 	}
 
 	[Benchmark]

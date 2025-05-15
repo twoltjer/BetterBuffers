@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace BetterBuffers;
 
+/// <inheritdoc cref="IBufferPool{T}"/>
 public class BufferPool<T> : IBufferPool<T>, IDisposable, IAsyncDisposable where T : unmanaged
 {
 	private readonly ConcurrentDictionary<int, BufferState<T>> _bufferStates =
@@ -17,6 +18,9 @@ public class BufferPool<T> : IBufferPool<T>, IDisposable, IAsyncDisposable where
 
 	private unsafe int GetMaxValues() => (1 << 30) / sizeof(T);
 
+	/// <summary>
+	/// Create a <see cref="BufferPool{T}"/> instance.
+	/// </summary>
 	public BufferPool()
 	{
 		_timer = new Timer(OnTimerTick, this, TimeSpan.FromSeconds(0.5), TimeSpan.FromSeconds(0.5));
@@ -39,6 +43,7 @@ public class BufferPool<T> : IBufferPool<T>, IDisposable, IAsyncDisposable where
 			bufferState.ProcessPendingWork();
 	}
 
+	/// <inheritdoc/>
 	public T[] RentExactly(int length, bool initializeWithDefaultValues)
 	{
 		if (length < 0)
@@ -64,6 +69,7 @@ public class BufferPool<T> : IBufferPool<T>, IDisposable, IAsyncDisposable where
 		return buffer;
 	}
 
+	/// <inheritdoc/>
 	public Memory<T> RentMemory(int length, bool initializeWithDefaultValues)
 	{
 		if (length < 0)
@@ -102,6 +108,7 @@ public class BufferPool<T> : IBufferPool<T>, IDisposable, IAsyncDisposable where
 		return value;
 	}
 
+	/// <inheritdoc/>
 	public T[] Rent(int minimumLength, bool initializeWithDefaultValues)
 	{
 		if (minimumLength < 0)
@@ -123,6 +130,7 @@ public class BufferPool<T> : IBufferPool<T>, IDisposable, IAsyncDisposable where
 		return array;
 	}
 
+	/// <inheritdoc/>
 	public bool TryRentExactly(int length, bool initializeWithDefaultValues, [NotNullWhen(true)] out T[]? array)
 	{
 		try
@@ -137,6 +145,7 @@ public class BufferPool<T> : IBufferPool<T>, IDisposable, IAsyncDisposable where
 		}
 	}
 
+	/// <inheritdoc/>
 	public bool TryRentMemory(int length, bool initializeWithDefaultValues, [NotNullWhen(true)] out Memory<T>? buffer)
 	{
 		try
@@ -151,6 +160,7 @@ public class BufferPool<T> : IBufferPool<T>, IDisposable, IAsyncDisposable where
 		}
 	}
 
+	/// <inheritdoc/>
 	public bool TryRent(int minimumLength, bool initializeWithDefaultValues, [NotNullWhen(true)] out T[]? array)
 	{
 		try
@@ -165,6 +175,7 @@ public class BufferPool<T> : IBufferPool<T>, IDisposable, IAsyncDisposable where
 		}
 	}
 
+	/// <inheritdoc/>
 	public void Return(
 		T[] array,
 		NonProvidedBufferReturnBehavior nonProvidedBufferReturnBehavior = NonProvidedBufferReturnBehavior.Ignore,
@@ -203,6 +214,7 @@ public class BufferPool<T> : IBufferPool<T>, IDisposable, IAsyncDisposable where
 		bufferState.ReturnBuffer(array, nonProvidedBufferReturnBehavior, alreadyReturnedBufferReturnBehavior);
 	}
 
+	/// <inheritdoc/>
 	public void Return(
 		Memory<T> memory,
 		NonProvidedBufferReturnBehavior nonProvidedBufferReturnBehavior = NonProvidedBufferReturnBehavior.AddToPool,
@@ -236,6 +248,7 @@ public class BufferPool<T> : IBufferPool<T>, IDisposable, IAsyncDisposable where
 		Return(array, nonProvidedBufferReturnBehavior, alreadyReturnedBufferReturnBehavior);
 	}
 
+	/// <inheritdoc/>
 	public long GetTotalUsedBytes()
 	{
 		long totalUsedBytes = 0;
@@ -248,11 +261,13 @@ public class BufferPool<T> : IBufferPool<T>, IDisposable, IAsyncDisposable where
 		return totalUsedBytes;
 	}
 
+	/// <inheritdoc/>
 	public long GetTotalAllocatedBytes()
 	{
 		return GetTotalUsedBytes() + GetTotalAvailableBytes();
 	}
 
+	/// <inheritdoc/>
 	public long GetTotalAvailableBytes()
 	{
 		long totalAvailableBytes = 0;
@@ -265,11 +280,13 @@ public class BufferPool<T> : IBufferPool<T>, IDisposable, IAsyncDisposable where
 		return totalAvailableBytes;
 	}
 
+	/// <inheritdoc/>
 	public void Dispose()
 	{
 		_timer.Dispose();
 	}
 
+	/// <inheritdoc/>
 	public async ValueTask DisposeAsync()
 	{
 		await _timer.DisposeAsync();

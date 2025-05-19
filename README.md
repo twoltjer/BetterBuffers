@@ -63,6 +63,10 @@ finally
 }
 ```
 
+## Documentation
+
+See [docs](docs) for tutorials, how-to guides, explanations, and reference information. 
+
 ## Migration from ArrayPool
 
 BetterBuffers is designed to be a drop-in replacement for ArrayPool:
